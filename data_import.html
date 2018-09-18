@@ -147,6 +147,22 @@ $(document).ready(function () {
 
 # janitor is another package, you want to do janitor::clean_names as opposed to library(janitor)... clean because if tidyverse and janitor has the same command, R wil be confused</code></pre>
 </div>
+<div id="import-fas_pups-csv-files" class="section level2">
+<h2>Import FAS_pups csv files</h2>
+<p>Import pups data set also</p>
+<pre class="r"><code>pups_data = read_csv(file = &quot;./data/FAS_pups.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `Litter Number` = col_character(),
+##   Sex = col_integer(),
+##   `PD ears` = col_integer(),
+##   `PD eyes` = col_integer(),
+##   `PD pivot` = col_integer(),
+##   `PD walk` = col_integer()
+## )</code></pre>
+<pre class="r"><code># pups_data = read_csv(file = &quot;~/Desktop/data_wrangling/data/FAS_pups.csv&quot;)
+pups_data = janitor::clean_names(pups_data)</code></pre>
+</div>
 
 
 

@@ -21,3 +21,13 @@ litters_data = janitor::clean_names(litters_data)
 
 # janitor is another package, you want to do janitor::clean_names as opposed to library(janitor)... clean because if tidyverse and janitor has the same command, R wil be confused
 ```
+
+## Import FAS_pups csv files
+
+Import pups data set also
+
+```{r}
+pups_data = read_csv(file = "./data/FAS_pups.csv")
+# pups_data = read_csv(file = "~/Desktop/data_wrangling/data/FAS_pups.csv")
+pups_data = janitor::clean_names(pups_data)
+```
