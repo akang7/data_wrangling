@@ -221,6 +221,44 @@ pups_data = janitor::clean_names(pups_data)
 ##  ▁▃▇▇▇▆▁▁
 ##  ▂▃▃▇▆▂▁▁</code></pre>
 <pre class="r"><code># View(litters_data) in console will pop up the entire dataset</code></pre>
+<p>Skip some rows; omit variable names</p>
+<pre class="r"><code>litters_data = read_csv(file = &quot;./data/FAS_litters.csv&quot;,
+  skip = 10, col_names = FALSE)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_character(),
+##   X2 = col_character(),
+##   X3 = col_double(),
+##   X4 = col_double(),
+##   X5 = col_integer(),
+##   X6 = col_integer(),
+##   X7 = col_integer(),
+##   X8 = col_integer()
+## )</code></pre>
+<p>Parsing columns (column types)</p>
+<pre class="r"><code>litters_data = read_csv(file = &quot;./data/FAS_litters.csv&quot;,
+  col_types = &quot;ccddiiii&quot;
+)
+#being specific about column types</code></pre>
+<p>Looking at pups data</p>
+<pre class="r"><code>pups_data = read_csv(&quot;./data/FAS_pups.csv&quot;, col_types = &quot;ciiiii&quot;)
+pups_data = janitor::clean_names(pups_data)
+skimr::skim(pups_data)</code></pre>
+<pre><code>## Skim summary statistics
+##  n obs: 313 
+##  n variables: 6 
+## 
+## ── Variable type:character ───────────────────────────────────────────────────────
+##       variable missing complete   n min max empty n_unique
+##  litter_number       0      313 313   3  15     0       49
+## 
+## ── Variable type:integer ─────────────────────────────────────────────────────────
+##  variable missing complete   n  mean   sd p0 p25 p50 p75 p100     hist
+##   pd_ears      18      295 313  3.68 0.59  2   3   4   4    5 ▁▁▅▁▁▇▁▁
+##   pd_eyes      13      300 313 12.99 0.62 12  13  13  13   15 ▂▁▇▁▁▂▁▁
+##  pd_pivot      13      300 313  7.09 1.51  4   6   7   8   12 ▃▆▇▃▂▁▁▁
+##   pd_walk       0      313 313  9.5  1.34  7   9   9  10   14 ▁▅▇▅▃▂▁▁
+##       sex       0      313 313  1.5  0.5   1   1   2   2    2 ▇▁▁▁▁▁▁▇</code></pre>
 </div>
 
 
