@@ -73,12 +73,19 @@ skimr::skim(pups_data)
 
 ## Other formats
 
-Looking at xlsx files 
+Read in xlsx files: 
 ```{r}
 mlb_data = readxl::read_excel(path = "./data/mlb11.xlsx")
 mlb_data = janitor::clean_names(mlb_data)
 
 mlb_subset = readxl::read_excel(path = "./data/mlb11.xlsx", range = "A1:E17")
 # don't save an xlsx format as a csv, use readxl
+```
+
+Read in pulse data:
+
+```{r}
+pulse_data = haven::read_sas("./data/public_pulse_data.sas7bdat")
+#parse columns differently?
 ```
 

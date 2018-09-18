@@ -262,12 +262,15 @@ skimr::skim(pups_data)</code></pre>
 </div>
 <div id="other-formats" class="section level2">
 <h2>Other formats</h2>
-<p>Looking at xlsx files</p>
+<p>Read in xlsx files:</p>
 <pre class="r"><code>mlb_data = readxl::read_excel(path = &quot;./data/mlb11.xlsx&quot;)
 mlb_data = janitor::clean_names(mlb_data)
 
 mlb_subset = readxl::read_excel(path = &quot;./data/mlb11.xlsx&quot;, range = &quot;A1:E17&quot;)
 # don't save an xlsx format as a csv, use readxl</code></pre>
+<p>Read in pulse data:</p>
+<pre class="r"><code>pulse_data = haven::read_sas(&quot;./data/public_pulse_data.sas7bdat&quot;)
+#parse columns differently?</code></pre>
 </div>
 
 
