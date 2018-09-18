@@ -260,6 +260,15 @@ skimr::skim(pups_data)</code></pre>
 ##   pd_walk       0      313 313  9.5  1.34  7   9   9  10   14 ▁▅▇▅▃▂▁▁
 ##       sex       0      313 313  1.5  0.5   1   1   2   2    2 ▇▁▁▁▁▁▁▇</code></pre>
 </div>
+<div id="other-formats" class="section level2">
+<h2>Other formats</h2>
+<p>Looking at xlsx files</p>
+<pre class="r"><code>mlb_data = readxl::read_excel(path = &quot;./data/mlb11.xlsx&quot;)
+mlb_data = janitor::clean_names(mlb_data)
+
+mlb_subset = readxl::read_excel(path = &quot;./data/mlb11.xlsx&quot;, range = &quot;A1:E17&quot;)
+# don't save an xlsx format as a csv, use readxl</code></pre>
+</div>
 
 
 

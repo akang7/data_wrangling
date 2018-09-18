@@ -71,4 +71,14 @@ pups_data = janitor::clean_names(pups_data)
 skimr::skim(pups_data)
 ```
 
+## Other formats
+
+Looking at xlsx files 
+```{r}
+mlb_data = readxl::read_excel(path = "./data/mlb11.xlsx")
+mlb_data = janitor::clean_names(mlb_data)
+
+mlb_subset = readxl::read_excel(path = "./data/mlb11.xlsx", range = "A1:E17")
+# don't save an xlsx format as a csv, use readxl
+```
 
