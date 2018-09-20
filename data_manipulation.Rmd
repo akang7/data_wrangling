@@ -107,4 +107,37 @@ filter(pups_data, sex == 1)
 filter(pups_data, pd_walk < 11, sex == 2)
 ```
 
+## mutate
+
+create variable
+
+```{r}
+mutate(litters_data,
+        wt_gain = gd18_weight - gd0_weight,
+       group = tolower(group)
+)
+#can do multiple variable mutations within one mutate
+#first, creating new variable wt_gain based on function of existing variables
+#next, overwriting existing group variable to a new version (makes everything lowercase)
+
+mutate(litters_data,
+      wt_gain = gd18_weight - gd0_weight,
+      wt_gain_squared = wt_gain^2
+)
+
+```
+
+## Arrange
+
+Arrange the data:
+```{r}
+arrange(litters_data, gd0_weight)
+# gd0_weight is arranged smallest 
+
+arrange(litters_data, pups_born_alive, gd0_weight)
+# pups_born_alive is arranged first (smallest to largest) and then gd0_weight
+
+arrange(litters_data, desc(pups_born_alive), gd0_weight)
+# descending order
+```
 
