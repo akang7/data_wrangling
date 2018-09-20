@@ -70,3 +70,22 @@ select(litters_data, litter_number, everything())
 
 ```
 
+## pups data
+```{r}
+select(pups_data, litter_number, sex, pd_ears)
+```
+
+## filter observations
+```{r}
+filter(litters_data, gd0_weight < 25)
+filter(litters_data, gd0_weight >= 25)
+
+filter(litters_data, pups_born_alive == 8)
+filter(litters_data, is.na(gd0_weight))
+# is.na = is there missing data in column?
+
+filter(litters_data, !is.na(gd0_weight))
+# !is.na = opposite of is.na
+```
+
+
