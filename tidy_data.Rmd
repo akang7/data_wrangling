@@ -1,0 +1,50 @@
+---
+title: "tidy_data"
+author: "Ashley Kang"
+date: "10/1/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+library(tidyverse)
+
+## gather 
+
+```{r, eval = FALSE}
+pulse_data = haven::read_sas("./data/public_pulse_data.sas7bdat") %>%
+  janitor::clean_names()
+pulse_data
+```
+
+This isn't tidy yet
+
+```{r, eval = FALSE}
+pulse_tidy = pulse_data %>% 
+  gather(key = "visit", value = "bdi_score", bdi_score_bl:bdi_score_12m)
+```
+
+
+Illustrate "separate"
+```{r, eval = FALSE}
+pulse_tidy %>% 
+  separate(visit, into = c("bdi_str", "score_str", "visit"), sep = "_") %>% 
+  select(-bdi_str, -score_str) %>% 
+  mutate(visit = replace(visit, visit == "bl", "00m"))
+
+```
+
+All together, data import/cleaning pipeline is:
+
+```{r, eval = FALSE}
+pulse_df =
+  haven::read_sas("./data/public_pulse_data.sas7bdat") %>%
+  janitor::clean_names() %>% 
+  gather(key = "visit", value = "bdi_score", bdi_score_bl:bdi_score_12m) %>% 
+  separate(visit, into = c("bdi_str", "score_str", "visit"), sep = "_") %>% 
+  select(-bdi_str, -score_str) %>% 
+  mutate(visit = replace(visit, visit == "bl", "00m"))
+```
+
